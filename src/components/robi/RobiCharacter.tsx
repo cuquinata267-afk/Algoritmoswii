@@ -6,6 +6,7 @@ interface RobiCharacterProps {
   direction?: Direction;
   className?: string;
   size?: number; // size in px
+  showBadge?: boolean;
 }
 
 export const RobiCharacter: React.FC<RobiCharacterProps> = ({
@@ -13,6 +14,7 @@ export const RobiCharacter: React.FC<RobiCharacterProps> = ({
   direction = 'UP',
   className = '',
   size = 72,
+  showBadge = false,
 }) => {
   // Animation based on state
   const animationClass = {
@@ -147,16 +149,18 @@ export const RobiCharacter: React.FC<RobiCharacterProps> = ({
         </svg>
       </div>
 
-      {/* Floating Direction Pointer Arrow Badge on ROBI's base */}
-      <div
-        className="absolute -bottom-1 right-0 bg-[#E86F88] text-white w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black shadow-md border-2 border-white pointer-events-none"
-        title={`Mirando hacia ${direction}`}
-      >
-        {direction === 'UP' && '↑'}
-        {direction === 'RIGHT' && '→'}
-        {direction === 'DOWN' && '↓'}
-        {direction === 'LEFT' && '←'}
-      </div>
+      {/* Floating Direction Pointer Arrow Badge on WARA's base (if requested) */}
+      {showBadge && (
+        <div
+          className="absolute -bottom-1 right-0 bg-[#E86F88] text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-black shadow-md border-2 border-white pointer-events-none"
+          title={`Wara mirando hacia ${direction}`}
+        >
+          {direction === 'UP' && '↑'}
+          {direction === 'RIGHT' && '→'}
+          {direction === 'DOWN' && '↓'}
+          {direction === 'LEFT' && '←'}
+        </div>
+      )}
     </div>
   );
 };

@@ -14,27 +14,27 @@ export const IntroConcepts: React.FC = () => {
 
       <main className="w-full max-w-md mx-auto p-4 sm:p-6 flex flex-col gap-6 my-auto z-10">
         <div className="text-center">
-          <h2 className="text-2xl font-black text-[#4A2E35] font-serif mb-1">
+          <h2 className="text-2xl sm:text-3xl font-black text-[#4A2E35] font-serif mb-1 leading-tight">
             Antes de empezar...
           </h2>
-          <p className="text-xs text-[#E86F88] font-bold tracking-tight">
+          <p className="text-sm sm:text-base text-[#E86F88] font-bold tracking-tight">
             En programación usamos tres conceptos clave:
           </p>
         </div>
 
-        {/* 3 Pastel Concept Cards (Matching Screen 3) */}
+        {/* 3 Pastel Concept Cards */}
         <div className="flex flex-col gap-3.5">
           {/* Card 1: SECUENCIA */}
           <div className="bg-white/95 p-4 rounded-3xl border-2 border-[#F4D5DD] flex items-center justify-between shadow-xs">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-[#FCE4EC] flex items-center justify-center text-[#E86F88]">
-                <ListOrdered className="w-5 h-5" />
+            <div className="flex items-center gap-3.5">
+              <div className="w-12 h-12 rounded-2xl bg-[#FCE4EC] flex items-center justify-center text-[#E86F88] flex-shrink-0">
+                <ListOrdered className="w-6 h-6" />
               </div>
               <div>
-                <h3 className="font-extrabold text-xs text-[#E86F88] uppercase tracking-wider">
+                <h3 className="font-black text-sm sm:text-base text-[#E86F88] uppercase tracking-wider">
                   SECUENCIA
                 </h3>
-                <p className="text-xs text-[#4A2E35] font-bold">
+                <p className="text-xs sm:text-sm text-[#4A2E35] font-bold">
                   Paso a paso ordenado
                 </p>
               </div>
@@ -44,15 +44,15 @@ export const IntroConcepts: React.FC = () => {
 
           {/* Card 2: DECISIÓN */}
           <div className="bg-white/95 p-4 rounded-3xl border-2 border-[#F4D5DD] flex items-center justify-between shadow-xs">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-[#FFF9C4] flex items-center justify-center text-[#F57F17]">
-                <GitFork className="w-5 h-5" />
+            <div className="flex items-center gap-3.5">
+              <div className="w-12 h-12 rounded-2xl bg-[#FFF9C4] flex items-center justify-center text-[#F57F17] flex-shrink-0">
+                <GitFork className="w-6 h-6" />
               </div>
               <div>
-                <h3 className="font-extrabold text-xs text-[#F57F17] uppercase tracking-wider">
+                <h3 className="font-black text-sm sm:text-base text-[#F57F17] uppercase tracking-wider">
                   DECISIÓN
                 </h3>
-                <p className="text-xs text-[#4A2E35] font-bold">
+                <p className="text-xs sm:text-sm text-[#4A2E35] font-bold">
                   Reaccionar según el caso
                 </p>
               </div>
@@ -62,27 +62,28 @@ export const IntroConcepts: React.FC = () => {
 
           {/* Card 3: REPETICIÓN */}
           <div className="bg-white/95 p-4 rounded-3xl border-2 border-[#F4D5DD] flex items-center justify-between shadow-xs">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-[#E8F5E9] flex items-center justify-center text-[#43A047]">
-                <Repeat className="w-5 h-5" />
+            <div className="flex items-center gap-3.5">
+              <div className="w-12 h-12 rounded-2xl bg-[#E8F5E9] flex items-center justify-center text-[#43A047] flex-shrink-0">
+                <Repeat className="w-6 h-6" />
               </div>
               <div>
-                <h3 className="font-extrabold text-xs text-[#43A047] uppercase tracking-wider">
+                <h3 className="font-black text-sm sm:text-base text-[#43A047] uppercase tracking-wider">
                   REPETICIÓN
                 </h3>
-                <p className="text-xs text-[#4A2E35] font-bold">
+                <p className="text-xs sm:text-sm text-[#4A2E35] font-bold">
                   Repetir acciones fácil
                 </p>
               </div>
             </div>
-            <div className="text-lg font-bold text-[#43A047]">🔄</div>
+            <div className="text-xl font-bold text-[#43A047]">🔄</div>
           </div>
         </div>
 
         {/* Big Pink Pill Button */}
         <button
+          type="button"
           onClick={() => navigate('/play?mission=1')}
-          className="w-full py-4 px-6 btn-pink-pill font-black text-base shadow-md flex items-center justify-center gap-2 group mt-2"
+          className="w-full min-h-[56px] py-4 px-6 btn-pink-pill font-black text-base sm:text-lg shadow-md flex items-center justify-center gap-2.5 group mt-2 active:scale-98"
         >
           <span>EMPEZAR MISIÓN 01</span>
           <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

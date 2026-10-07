@@ -3,6 +3,7 @@ import { useSearchParams, useNavigate } from 'react-router-dom';
 import { Header } from '../components/common/Header';
 import { Grid } from '../components/grid/Grid';
 import { Controls } from '../components/controls/Controls';
+import { RobotDirectionIndicator } from '../components/robi/RobotDirectionIndicator';
 import { PedagogyModal } from '../components/common/PedagogyModal';
 import { ErrorFeedback } from '../components/common/ErrorFeedback';
 import { MISSIONS } from '../game/missions';
@@ -239,26 +240,26 @@ export const PlayScreen: React.FC = () => {
     <div className="min-h-screen bg-pastel-pink flex flex-col justify-between select-none">
       <Header currentMission={missionId} />
 
-      <main className="w-full max-w-lg mx-auto p-3 sm:p-4 flex flex-col gap-3 my-auto">
-        {/* Título de la Misión */}
+      <main className="w-full max-w-lg mx-auto p-3 sm:p-4 flex flex-col gap-3.5 my-auto">
+        {/* 1. Título de la Misión */}
         <div className="text-center">
-          <h2 className="text-xl sm:text-2xl font-black text-pastel-berry font-serif">
+          <h2 className="text-2xl sm:text-3xl font-black text-pastel-berry font-serif leading-tight">
             {currentMission.title}
           </h2>
-          <p className="text-xs text-pastel-vibrant font-semibold mt-0.5">
+          <p className="text-sm sm:text-base text-pastel-vibrant font-bold mt-1">
             {currentMission.subtitle}
           </p>
         </div>
 
-        {/* Indicación Pedagógica */}
-        <div className="bg-white/90 border border-pastel-rose/40 rounded-2xl p-3 flex flex-col gap-1 shadow-xs">
-          <div className="flex items-start gap-2">
-            <Lightbulb className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" />
-            <p className="text-xs text-pastel-berry font-bold leading-tight">
+        {/* 2. Indicación Pedagógica Breve */}
+        <div className="bg-white/95 border-2 border-[#F4D5DD] rounded-2xl p-3.5 sm:p-4 flex flex-col gap-1.5 shadow-xs">
+          <div className="flex items-start gap-2.5">
+            <Lightbulb className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
+            <p className="text-sm sm:text-base text-pastel-berry font-bold leading-snug">
               {currentMission.hint}
             </p>
           </div>
-          <p className="text-[10.5px] text-[#8C4A5A] font-semibold pl-6">
+          <p className="text-xs sm:text-sm text-[#8C4A5A] font-semibold pl-7">
             {missionId === 1 && (
               <>🌸 <span className="font-extrabold text-[#E86F88]">El orden importa:</span> Construye tu algoritmo y pulsa <span className="font-bold">EJECUTAR</span>.</>
             )}
@@ -271,7 +272,7 @@ export const PlayScreen: React.FC = () => {
           </p>
         </div>
 
-        {/* Cuadrícula interactiva con orientación explícita de ROBI */}
+        {/* 3. Cuadrícula interactiva con señales visuales de WARA */}
         <Grid
           mission={currentMission}
           robiPos={robiPos}
@@ -281,23 +282,10 @@ export const PlayScreen: React.FC = () => {
           stepMessage={stepMessage}
         />
 
-        {/* Feedback de error detallado y no punitivo */}
-        <ErrorFeedback
-          error={currentError}
-          onDismiss={() => {
-            // Al presionar EDITAR INSTRUCCIONES: cierra el modal y vuelve a ROBI a START (Regla 8)
-            resetAttempt(false);
-          }}
-          onReExecute={() => {
-            // Al presionar VOLVER A EJECUTAR: vuelve a START y ejecuta de nuevo
-            resetAttempt(false);
-            setTimeout(() => {
-              handleExecute();
-            }, 50);
-          }}
-        />
+        {/* 4. Indicador explícito y reutilizable de dirección de WARA */}
+        <RobotDirectionIndicator direction={robiDir} />
 
-        {/* Controles de la misión */}
+        {/* 5, 6, 7. Secuencia construida, Controles táctiles y Botón EJECUTAR */}
         <Controls
           missionId={missionId}
           commands={commands}
@@ -314,6 +302,22 @@ export const PlayScreen: React.FC = () => {
           onUpdateConditionRule={setConditionRule}
           loopRule={loopRule}
           onUpdateLoopRule={setLoopRule}
+        />
+
+        {/* 8. Feedback de error detallado y no punitivo */}
+        <ErrorFeedback
+          error={currentError}
+          onDismiss={() => {
+            // Al presionar EDITAR INSTRUCCIONES: cierra el modal y vuelve a WARA a START
+            resetAttempt(false);
+          }}
+          onReExecute={() => {
+            // Al presionar VOLVER A EJECUTAR: vuelve a START y ejecuta de nuevo
+            resetAttempt(false);
+            setTimeout(() => {
+              handleExecute();
+            }, 50);
+          }}
         />
       </main>
 

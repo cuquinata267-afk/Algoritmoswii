@@ -1,7 +1,7 @@
 import React from 'react';
 import { Direction, MissionConfig, Position, RobiState } from '../../types';
 import { RobiCharacter } from '../robi/RobiCharacter';
-import { Sparkles, Compass } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 
 interface GridProps {
   mission: MissionConfig;
@@ -24,44 +24,23 @@ export const Grid: React.FC<GridProps> = ({
 }) => {
   const { cols, rows } = mission.gridSize;
 
-  const directionLabel = {
-    UP: '↑ ARRIBA',
-    RIGHT: '→ DERECHA',
-    DOWN: '↓ ABAJO',
-    LEFT: '← IZQUIERDA',
-  }[robiDir];
-
   return (
-    <div className="w-full flex flex-col items-center justify-center p-1 sm:p-2 select-none">
-      {/* Explicit Orientation Pill Banner (Requirement 14) */}
-      <div className="w-full max-w-sm mb-1.5 px-3 py-1.5 bg-white/95 rounded-2xl border border-[#F4D5DD] shadow-xs flex items-center justify-between text-xs">
-        <div className="flex items-center gap-1.5 font-bold text-[#4A2E35]">
-          <Compass className="w-3.5 h-3.5 text-[#E86F88]" />
-          <span className="text-[11px] text-[#8C4A5A]">Mirando:</span>
-          <span className="bg-[#FAF0F4] text-[#E86F88] px-2 py-0.5 rounded-full font-black border border-[#F4D5DD]">
-            {directionLabel}
-          </span>
-        </div>
-        <span className="text-[10px] text-[#8C4A5A]/80 font-medium italic">
-          Avanza hacia donde mira
-        </span>
-      </div>
-
+    <div className="w-full flex flex-col items-center justify-center p-0.5 sm:p-1 select-none">
       {/* Live Step / Pedagogy Message Banner (Observation -> Decision -> Action) */}
       {stepMessage && (
-        <div className="w-full max-w-sm mb-2 px-3 py-1 bg-white/90 border border-[#F4D5DD] rounded-xl text-[11px] font-bold text-[#8C4A5A] text-center shadow-xs flex items-center justify-center gap-1.5 animate-pulse">
-          <span>{stepMessage}</span>
+        <div className="w-full max-w-[340px] sm:max-w-[390px] md:max-w-[420px] mb-2 px-3 py-1.5 bg-white/95 border-2 border-[#F4D5DD] rounded-2xl text-xs sm:text-sm font-bold text-[#8C4A5A] text-center shadow-xs flex items-center justify-center gap-2 animate-pulse">
+          <span className="text-sm">🌸</span>
+          <span className="leading-tight">{stepMessage}</span>
         </div>
       )}
 
-      {/* Garden Outer Wooden Frame */}
-      <div className="relative bg-[#E8DCC4]/90 p-2.5 sm:p-3.5 rounded-3xl border-4 border-[#C9B896] shadow-md max-w-full">
+      {/* Garden Outer Wooden Frame - Fully Responsive Width, Zero Horizontal Scroll */}
+      <div className="relative w-full max-w-[340px] sm:max-w-[390px] md:max-w-[420px] mx-auto bg-[#E8DCC4]/95 p-2 sm:p-3 rounded-3xl border-4 border-[#C9B896] shadow-md">
         {/* Garden Grid Matrix */}
         <div
-          className="grid gap-1.5 p-1.5 bg-[#A3C9A8] rounded-2xl border-2 border-[#8DA875] shadow-inner"
+          className="grid gap-1 sm:gap-1.5 p-1 sm:p-1.5 bg-[#A3C9A8] rounded-2xl border-2 border-[#8DA875] shadow-inner w-full"
           style={{
             gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
-            gridTemplateRows: `repeat(${rows}, minmax(0, 1fr))`,
           }}
         >
           {Array.from({ length: rows }).map((_, r) =>
@@ -84,7 +63,7 @@ export const Grid: React.FC<GridProps> = ({
                 <div
                   key={`${r}-${c}`}
                   className={`
-                    relative w-13 h-13 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-xl flex items-center justify-center
+                    relative aspect-square w-full rounded-xl flex items-center justify-center
                     transition-all duration-300 shadow-xs
                     ${
                       isInspected
@@ -100,42 +79,107 @@ export const Grid: React.FC<GridProps> = ({
                     }
                   `}
                 >
-                  {/* Start tile label when ROBI is not there */}
+                  {/* Start tile label when Wara is not there */}
                   {isStartHere && !isRobiHere && (
-                    <span className="absolute bottom-1 font-mono font-bold text-[9px] text-[#557A46]">
-                      START
+                    <span className="absolute bottom-1 font-mono font-bold text-[9px] sm:text-[10px] text-[#557A46]">
+                      INICIO
                     </span>
                   )}
 
                   {/* Decorative Bush texture details */}
                   {((r === 0 && c === 1) || (r === 2 && c === 0)) && !isObstacle && !isRobiHere && !isStarHere && (
-                    <span className="text-xs sm:text-sm opacity-70">🌿</span>
+                    <span className="text-xs sm:text-sm opacity-60">🌿</span>
                   )}
 
                   {/* Obstacle Rock 🪨 */}
                   {isObstacle && !isRobiHere && (
                     <div className="flex flex-col items-center justify-center animate-bounce-gentle">
-                      <span className="text-2xl sm:text-3xl filter drop-shadow-xs">🪨</span>
+                      <span className="text-xl sm:text-2xl md:text-3xl filter drop-shadow-xs">🪨</span>
                     </div>
                   )}
 
                   {/* Target Star ⭐ */}
                   {isStarHere && (
                     <div className="relative flex items-center justify-center">
-                      <span className="text-3xl sm:text-4xl filter drop-shadow-md animate-pulse">⭐</span>
-                      <Sparkles className="absolute -top-1 -right-1 w-4 h-4 text-amber-300 animate-spin" />
+                      <span className="text-2xl sm:text-3xl md:text-4xl filter drop-shadow-md animate-pulse">⭐</span>
+                      <Sparkles className="absolute -top-1 -right-1 w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-300 animate-spin" />
                     </div>
                   )}
 
-                  {/* ROBI Character */}
+                  {/* Wara Character and Direction Indicators */}
                   {isRobiHere && (
-                    <div className="absolute inset-0 flex items-center justify-center z-20">
-                      <RobiCharacter
-                        state={robiState}
-                        direction={robiDir}
-                        size={cols > 4 ? 48 : 58}
+                    <>
+                      {/* 1. Subtle Vision/Direction Ray in Facing Direction */}
+                      <div
+                        className={`
+                          absolute inset-0 rounded-xl pointer-events-none transition-all duration-300 z-10
+                          ${
+                            robiDir === 'UP'
+                              ? 'bg-gradient-to-t from-transparent via-[#E86F88]/15 to-[#E86F88]/35'
+                              : robiDir === 'RIGHT'
+                              ? 'bg-gradient-to-r from-transparent via-[#E86F88]/15 to-[#E86F88]/35'
+                              : robiDir === 'DOWN'
+                              ? 'bg-gradient-to-b from-transparent via-[#E86F88]/15 to-[#E86F88]/35'
+                              : 'bg-gradient-to-l from-transparent via-[#E86F88]/15 to-[#E86F88]/35'
+                          }
+                        `}
                       />
-                    </div>
+
+                      {/* 2. Directional Turntable Base on Ground */}
+                      <div className="absolute inset-1.5 rounded-full border-2 border-dashed border-[#E86F88]/40 bg-white/40 pointer-events-none z-10 flex items-center justify-center">
+                        <div
+                          className="w-full h-full relative flex items-center justify-center transition-transform duration-300"
+                          style={{
+                            transform: `rotate(${
+                              robiDir === 'UP'
+                                ? 0
+                                : robiDir === 'RIGHT'
+                                ? 90
+                                : robiDir === 'DOWN'
+                                ? 180
+                                : 270
+                            }deg)`,
+                          }}
+                        >
+                          <div className="w-2 h-2 bg-[#E86F88] rounded-full absolute -top-1 shadow-xs ring-2 ring-white" />
+                        </div>
+                      </div>
+
+                      {/* 3. WARA SVG Character */}
+                      <div className="absolute inset-0 flex items-center justify-center z-20">
+                        <RobiCharacter
+                          state={robiState}
+                          direction={robiDir}
+                          size={cols > 4 ? 38 : 52}
+                        />
+                      </div>
+
+                      {/* 4. Prominent Directional Pointer Arrow Badge at Edge of Tile */}
+                      <div
+                        className={`
+                          absolute z-30 pointer-events-none flex items-center justify-center transition-all duration-300
+                          ${
+                            robiDir === 'UP'
+                              ? '-top-2.5 left-1/2 -translate-x-1/2'
+                              : robiDir === 'RIGHT'
+                              ? '-right-2.5 top-1/2 -translate-y-1/2'
+                              : robiDir === 'DOWN'
+                              ? '-bottom-2.5 left-1/2 -translate-x-1/2'
+                              : '-left-2.5 top-1/2 -translate-y-1/2'
+                          }
+                        `}
+                        aria-label={`Wara mira hacia ${robiDir}`}
+                      >
+                        <div className="bg-[#E86F88] text-white px-2 py-0.5 rounded-full text-xs font-black shadow-md border-2 border-white flex items-center gap-0.5 animate-bounce-gentle">
+                          <span className="text-xs sm:text-sm font-black leading-none">
+                            {robiDir === 'UP' && '↑'}
+                            {robiDir === 'RIGHT' && '→'}
+                            {robiDir === 'DOWN' && '↓'}
+                            {robiDir === 'LEFT' && '←'}
+                          </span>
+                        </div>
+                      </div>
+                    </>
                   )}
                 </div>
               );
@@ -144,10 +188,10 @@ export const Grid: React.FC<GridProps> = ({
         </div>
 
         {/* Decorative Garden Fence / Flower Details */}
-        <span className="absolute -top-3 -left-2 text-lg">🌸</span>
-        <span className="absolute -top-3 -right-2 text-lg">🌸</span>
-        <span className="absolute -bottom-3 -left-2 text-lg">🌼</span>
-        <span className="absolute -bottom-3 -right-2 text-lg">🌼</span>
+        <span className="absolute -top-3 -left-2 text-lg sm:text-xl" aria-hidden="true">🌸</span>
+        <span className="absolute -top-3 -right-2 text-lg sm:text-xl" aria-hidden="true">🌸</span>
+        <span className="absolute -bottom-3 -left-2 text-lg sm:text-xl" aria-hidden="true">🌼</span>
+        <span className="absolute -bottom-3 -right-2 text-lg sm:text-xl" aria-hidden="true">🌼</span>
       </div>
     </div>
   );

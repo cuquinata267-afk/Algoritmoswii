@@ -162,7 +162,7 @@ export class GameEngine {
     isObstacle: boolean,
     chosenAction: CommandType
   ) {
-    if (import.meta.env.DEV) {
+    if (typeof import.meta !== 'undefined' && import.meta.env?.DEV) {
       console.log(`[MISSION 02]
 Robot:
   position = { row: ${pos.y}, col: ${pos.x} }
