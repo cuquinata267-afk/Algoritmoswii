@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #FAF0F4;
+    background-image: 
+      radial-gradient(rgba(232, 111, 136, 0.08) 1.5px, transparent 1.5px),
+      radial-gradient(rgba(181, 201, 154, 0.08) 1.5px, transparent 1.5px);
+    background-size: 28px 28px, 56px 56px;
+    background-position: 0 0, 14px 14px;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    color: #4A2E35;
+  }
+}
+
+/* Floral vine corner SVG styling */
+.floral-corner-tl {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.floral-corner-tr {
+  position: absolute;
+  top: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.floral-corner-bl {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.floral-corner-br {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Soft glassmorphism panel with warm vintage border */
+.glass-panel-warm {
+  background: rgba(255, 253, 249, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.5px solid #F6D6DF;
+  box-shadow: 0 10px 30px -5px rgba(218, 85, 116, 0.08);
+}
+
+.glass-card-warm {
+  background: #FFFFFF;
+  border: 1.5px solid #F4D5DD;
+  box-shadow: 0 4px 16px rgba(74, 46, 53, 0.04);
+}
+
+/* Exact Pill Button Styling from reference image */
+.btn-pink-pill {
+  background: linear-gradient(135deg, #E86F88 0%, #D85573 100%);
+  color: #FFFFFF;
+  border-radius: 9999px;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(216, 85, 115, 0.35);
+  transition: all 0.2s ease;
+}
+
+.btn-pink-pill:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(216, 85, 115, 0.45);
+  opacity: 0.98;
+}
+
+.btn-pink-pill:active {
+  transform: translateY(1px);
+}
+
+.btn-pink-outline {
+  background: #FFFDF9;
+  color: #D85573;
+  border: 2px solid #F48FB1;
+  border-radius: 9999px;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.btn-pink-outline:hover {
+  background: #FDF0F5;
+}
+
+/* Speech bubble tail styling */
+.speech-bubble {
+  position: relative;
+  background: #FFFFFF;
+  border-radius: 20px;
+  border: 1.5px solid #F4D5DD;
+  box-shadow: 0 4px 16px rgba(74, 46, 53, 0.06);
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 10px 10px 0;
+  border-style: solid;
+  border-color: #FFFFFF transparent;
+  display: block;
+  width: 0;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF0F4;
+}
+::-webkit-scrollbar-thumb {
+  background: #F48FB1;
+  border-radius: 9999px;
+}
