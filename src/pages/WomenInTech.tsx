@@ -26,7 +26,7 @@ export const WomenInTech: React.FC = () => {
         <div className="glass-panel p-5 rounded-3xl border-2 border-pastel-rose/40 flex flex-col items-center gap-3">
           <RobiCharacter state="THINKING" size={70} />
           <p className="text-sm font-bold text-pastel-berry">
-            "ROBI solo hizo lo que alguien decidió enseñarle."
+            "WARA solo hizo lo que alguien decidió enseñarle."
           </p>
           <div className="bg-white/90 p-3 rounded-2xl border border-pastel-rose/30 text-xs sm:text-sm font-black text-pastel-vibrant">
             Entonces... ¿quién decide cómo funciona la tecnología?

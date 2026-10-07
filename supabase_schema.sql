@@ -22,7 +22,7 @@ CREATE INDEX IF NOT EXISTS idx_sessions_code ON public.sessions(code);
 CREATE TABLE IF NOT EXISTS public.participants (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     session_id UUID REFERENCES public.sessions(id) ON DELETE CASCADE,
-    anonymous_name VARCHAR(50) NOT NULL, -- Ej: "Programadora Estelar", "ROBI Friend 42"
+    anonymous_name VARCHAR(50) NOT NULL, -- Ej: "Programadora Estelar", "WARA Friend 42"
     current_mission INT DEFAULT 1,
     completed_missions INT DEFAULT 0,
     selected_mode VARCHAR(20) DEFAULT 'buttons', -- 'buttons' | 'blocks'

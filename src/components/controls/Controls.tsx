@@ -150,7 +150,7 @@ export const Controls: React.FC<ControlsProps> = ({
                   <button
                     onClick={onResetAttempt}
                     className="text-[#8C4A5A] hover:text-[#4A2E35] flex items-center gap-1 text-[11px] font-semibold bg-[#FAF0F4] px-2 py-0.5 rounded-lg border border-[#F4D5DD] transition-colors"
-                    title="Vuelve a ROBI al inicio sin borrar la secuencia"
+                    title="Vuelve a WARA al inicio sin borrar la secuencia"
                   >
                     <ResetIcon className="w-3 h-3" /> Reiniciar intento
                   </button>
@@ -245,7 +245,7 @@ export const Controls: React.FC<ControlsProps> = ({
                 <button
                   onClick={onResetAttempt}
                   className="text-[#8C4A5A] hover:text-[#4A2E35] flex items-center gap-1 text-[11px] font-semibold bg-[#FAF0F4] px-2 py-0.5 rounded-lg border border-[#F4D5DD] transition-colors"
-                  title="Vuelve a ROBI al inicio"
+                  title="Vuelve a WARA al inicio"
                 >
                   <ResetIcon className="w-3 h-3" /> Reiniciar intento
                 </button>
@@ -282,7 +282,7 @@ export const Controls: React.FC<ControlsProps> = ({
             /* METHOD A: BUTTONS / CARD SELECTOR */
             <div className="bg-white/95 p-4 rounded-3xl border-2 border-[#F4D5DD] flex flex-col gap-3 shadow-xs">
               <div className="text-center font-bold text-xs text-[#8C4A5A]">
-                Configura la decisión de ROBI y pulsa <span className="text-[#E86F88] font-black">EJECUTAR</span>
+                Configura la decisión de WARA y pulsa <span className="text-[#E86F88] font-black">EJECUTAR</span>
               </div>
 
               {/* Rama SI */}
@@ -363,7 +363,7 @@ export const Controls: React.FC<ControlsProps> = ({
             /* METHOD B: VISUAL CODE BLOCKS (Scratch-like nested style) */
             <div className="bg-white/95 p-4 rounded-3xl border-2 border-[#F4D5DD] flex flex-col gap-2.5 shadow-xs">
               <div className="text-center font-bold text-xs text-[#8C4A5A]">
-                Bloque condicional de ROBI
+                Bloque condicional de WARA
               </div>
 
               {/* Bloque SI */}

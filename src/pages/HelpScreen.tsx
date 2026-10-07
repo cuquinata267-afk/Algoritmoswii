@@ -24,7 +24,7 @@ export const HelpScreen: React.FC = () => {
               ¿Cómo jugar en ALGORITMIA?
             </h2>
             <p className="text-xs text-pastel-vibrant font-semibold">
-              Guía rápida para enseñarle a ROBI
+              Guía rápida para enseñarle a WARA
             </p>
           </div>
         </div>
@@ -37,7 +37,7 @@ export const HelpScreen: React.FC = () => {
             <div>
               <h3 className="font-bold text-pastel-berry">1. ↑ AVANZAR</h3>
               <p className="text-slate-600 text-xs mt-0.5">
-                Hace que ROBI camine una casilla en la dirección donde está mirando.
+                Hace que WARA camine una casilla en la dirección donde está mirando.
               </p>
             </div>
           </div>
@@ -51,7 +51,7 @@ export const HelpScreen: React.FC = () => {
             <div>
               <h3 className="font-bold text-pastel-berry">2. ↶ GIRAR</h3>
               <p className="text-slate-600 text-xs mt-0.5">
-                Hace que ROBI gire 90 grados a la izquierda o a la derecha sin avanzar.
+                Hace que WARA gire 90 grados a la izquierda o a la derecha sin avanzar.
               </p>
             </div>
           </div>
@@ -73,7 +73,7 @@ export const HelpScreen: React.FC = () => {
             <div>
               <h3 className="font-bold text-pastel-berry">4. EJECUTAR</h3>
               <p className="text-slate-600 text-xs mt-0.5">
-                Presiona el botón grande para poner a prueba tu algoritmo y ver a ROBI avanzar hacia la estrella.
+                Presiona el botón grande para poner a prueba tu algoritmo y ver a WARA avanzar hacia la estrella.
               </p>
             </div>
           </div>

@@ -263,7 +263,7 @@ export const PlayScreen: React.FC = () => {
               <>🌸 <span className="font-extrabold text-[#E86F88]">El orden importa:</span> Construye tu algoritmo y pulsa <span className="font-bold">EJECUTAR</span>.</>
             )}
             {missionId === 2 && (
-              <>💡 <span className="font-extrabold text-[#E86F88]">Evaluar antes de actuar:</span> Si ROBI encuentra un obstáculo, tomará una decisión.</>
+              <>💡 <span className="font-extrabold text-[#E86F88]">Evaluar antes de actuar:</span> Si WARA encuentra un obstáculo, tomará una decisión.</>
             )}
             {missionId === 3 && (
               <>🔄 <span className="font-extrabold text-[#E86F88]">Repetición:</span> Con un bucle escribes menos y logras más.</>

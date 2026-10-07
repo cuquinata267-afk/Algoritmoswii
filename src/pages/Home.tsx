@@ -42,7 +42,7 @@ export const Home: React.FC = () => {
           {/* Speech Bubble */}
           <div className="speech-bubble w-full p-4 text-center">
             <p className="text-sm sm:text-base font-bold text-[#4A2E35] leading-relaxed">
-              Hola, soy <span className="text-[#E86F88] font-black">ROBI</span>.
+              Hola, soy <span className="text-[#E86F88] font-black">WARA</span>.
               <br />
               Necesito que me enseñes a resolver problemas paso a paso. ♥
             </p>

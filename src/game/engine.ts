@@ -30,7 +30,7 @@ export class GameEngine {
   }
 
   /**
-   * Función canónica para calcular la casilla inmediatamente delante de ROBI
+   * Función canónica para calcular la casilla inmediatamente delante de WARA
    * Respeta rigurosamente:
    * NORTH (UP): row - 1 (y - 1)
    * SOUTH (DOWN): row + 1 (y + 1)
@@ -126,7 +126,7 @@ export class GameEngine {
 
   /**
    * Función central de detección de obstáculos (Regla 4 y 6):
-   * Comprueba ÚNICAMENTE la casilla inmediatamente delante de ROBI.
+   * Comprueba ÚNICAMENTE la casilla inmediatamente delante de WARA.
    * Calcula: pos + dir = forwardPos.
    * Si forwardPos es wall o está fuera de límites -> isObstacle = true.
    * Si está libre -> isObstacle = false.
@@ -203,7 +203,7 @@ Action:
       position: { ...currentPos },
       direction: currentDir,
       robiState: 'IDLE',
-      logMessage: `Inicio: ROBI en START (${currentPos.x}, ${currentPos.y}) mirando hacia ${this.getDirectionName(currentDir)}.`,
+      logMessage: `Inicio: WARA en START (${currentPos.x}, ${currentPos.y}) mirando hacia ${this.getDirectionName(currentDir)}.`,
     });
 
     if (commands.length === 0) {
@@ -253,8 +253,8 @@ Action:
           inspectedPosition: forwardPos,
           evaluationPhase: 'OBSERVING',
           logMessage: isObstacle
-            ? 'ROBI observando: ¡Hay un obstáculo en frente!'
-            : 'ROBI observando: El camino está libre.',
+            ? 'WARA observando: ¡Hay un obstáculo en frente!'
+            : 'WARA observando: El camino está libre.',
         });
 
         // Paso pedagógico 2: DECIDIR Y ACTUAR
@@ -266,7 +266,7 @@ Action:
               robiState: 'ERROR',
               activeCommandIndex: i,
               evaluationPhase: 'ACTING',
-              logMessage: '¡ROBI intentó avanzar hacia un obstáculo!',
+              logMessage: '¡WARA intentó avanzar hacia un obstáculo!',
             });
             return {
               steps,
@@ -275,7 +275,7 @@ Action:
               finalDirection: currentDir,
               error: {
                 type: 'OBSTACLE_COLLISION',
-                title: 'ROBI chocó con la piedra.',
+                title: 'WARA chocó con la piedra.',
                 stepIndex: i,
                 stepNumber: i + 1,
                 commandType: 'CONDITIONAL',
@@ -325,7 +325,7 @@ Action:
             finalDirection: currentDir,
             error: {
               type: 'OUT_OF_BOUNDS',
-              title: 'ROBI salió del tablero.',
+              title: 'WARA salió del tablero.',
               stepIndex: i,
               stepNumber: i + 1,
               commandType: 'MOVE_FORWARD',
@@ -333,8 +333,8 @@ Action:
               robotOrientation: currentDir,
               position: currentPos,
               targetPosition: nextPos,
-              reason: `En la instrucción ${i + 1} (${cmd.label}), ROBI intentó avanzar fuera de la cuadrícula hacia ${this.getDirectionName(currentDir)}.`,
-              suggestion: 'Revisa el orden de tus instrucciones. Recuerda orientar a ROBI con un giro antes de que llegue al límite del tablero.',
+              reason: `En la instrucción ${i + 1} (${cmd.label}), WARA intentó avanzar fuera de la cuadrícula hacia ${this.getDirectionName(currentDir)}.`,
+              suggestion: 'Revisa el orden de tus instrucciones. Recuerda orientar a WARA con un giro antes de que llegue al límite del tablero.',
             },
           };
         }
@@ -355,7 +355,7 @@ Action:
             finalDirection: currentDir,
             error: {
               type: 'OBSTACLE_COLLISION',
-              title: 'ROBI chocó con una piedra.',
+              title: 'WARA chocó con una piedra.',
               stepIndex: i,
               stepNumber: i + 1,
               commandType: 'MOVE_FORWARD',
@@ -363,8 +363,8 @@ Action:
               robotOrientation: currentDir,
               position: currentPos,
               targetPosition: nextPos,
-              reason: `En la instrucción ${i + 1} (${cmd.label}), ROBI estaba mirando hacia ${this.getDirectionName(currentDir)} y la casilla de adelante tenía un obstáculo.`,
-              suggestion: 'Gira a ROBI en la dirección libre antes de intentar avanzar.',
+              reason: `En la instrucción ${i + 1} (${cmd.label}), WARA estaba mirando hacia ${this.getDirectionName(currentDir)} y la casilla de adelante tenía un obstáculo.`,
+              suggestion: 'Gira a WARA en la dirección libre antes de intentar avanzar.',
             },
           };
         }
@@ -402,7 +402,7 @@ Action:
         position: { ...currentPos },
         direction: currentDir,
         robiState: 'SUCCESS',
-        logMessage: '¡ROBI llegó exactamente a la meta! ⭐',
+        logMessage: '¡WARA llegó exactamente a la meta! ⭐',
       });
       return {
         steps,
@@ -429,11 +429,11 @@ Action:
         finalDirection: currentDir,
         error: {
           type: 'GOAL_NOT_REACHED',
-          title: 'ROBI no llegó a la estrella.',
+          title: 'WARA no llegó a la estrella.',
           position: currentPos,
           targetPosition: mission.starPosition,
-          reason: `Tu algoritmo terminó antes de llegar a la estrella. ROBI se detuvo en (${currentPos.x}, ${currentPos.y}), a ${distance} casilla${distance > 1 ? 's' : ''} de la meta.`,
-          suggestion: 'Revisa el orden de tus instrucciones. Recuerda que girar cambia la dirección de ROBI, pero no lo mueve de casilla. ¿Falta avanzar?',
+          reason: `Tu algoritmo terminó antes de llegar a la estrella. WARA se detuvo en (${currentPos.x}, ${currentPos.y}), a ${distance} casilla${distance > 1 ? 's' : ''} de la meta.`,
+          suggestion: 'Revisa el orden de tus instrucciones. Recuerda que girar cambia la dirección de WARA, pero no lo mueve de casilla. ¿Falta avanzar?',
         },
       };
     }
@@ -463,7 +463,7 @@ Action:
       position: { ...currentPos },
       direction: currentDir,
       robiState: 'IDLE',
-      logMessage: `Inicio: ROBI en START (${currentPos.x}, ${currentPos.y}) mirando hacia ${this.getDirectionName(currentDir)}.`,
+      logMessage: `Inicio: WARA en START (${currentPos.x}, ${currentPos.y}) mirando hacia ${this.getDirectionName(currentDir)}.`,
     });
 
     // En la Misión 02 el recorrido óptimo es de 2 pasos
@@ -493,7 +493,7 @@ Action:
         chosenAction
       );
 
-      // Paso 1: OBSERVAR (ROBI pensando y comprobando)
+      // Paso 1: OBSERVAR (WARA pensando y comprobando)
       steps.push({
         position: { ...currentPos },
         direction: currentDir,
@@ -502,8 +502,8 @@ Action:
         inspectedPosition: forwardPos,
         evaluationPhase: 'OBSERVING',
         logMessage: isObstacle
-          ? 'ROBI comprobando camino: ¡Hay un obstáculo en frente!'
-          : 'ROBI comprobando camino: El camino está libre.',
+          ? 'WARA comprobando camino: ¡Hay un obstáculo en frente!'
+          : 'WARA comprobando camino: El camino está libre.',
       });
 
       // Paso 2: DECIDIR Y ACTUAR
@@ -515,7 +515,7 @@ Action:
             direction: currentDir,
             robiState: 'ERROR',
             evaluationPhase: 'ACTING',
-            logMessage: '¡ROBI avanzó directamente hacia el obstáculo!',
+            logMessage: '¡WARA avanzó directamente hacia el obstáculo!',
           });
           return {
             steps,
@@ -524,7 +524,7 @@ Action:
             finalDirection: currentDir,
             error: {
               type: 'OBSTACLE_COLLISION',
-              title: 'ROBI chocó con la piedra.',
+              title: 'WARA chocó con la piedra.',
               reason: 'Cuando había un obstáculo en frente, la regla intentó avanzar en lugar de girar para esquivarlo.',
               suggestion: 'En "Si hay obstáculo", selecciona GIRAR DERECHA para esquivar la piedra.',
             },
@@ -538,7 +538,7 @@ Action:
           direction: currentDir,
           robiState: 'WALKING',
           evaluationPhase: 'ACTING',
-          logMessage: 'Camino libre: ROBI avanzó una casilla.',
+          logMessage: 'Camino libre: WARA avanzó una casilla.',
         });
       } else {
         // Giro: modifica ÚNICAMENTE la orientación, NO la casilla (Regla 10)
@@ -550,8 +550,8 @@ Action:
           isTurnOnly: true,
           evaluationPhase: 'ACTING',
           logMessage: isObstacle
-            ? `¡Obstáculo detectado! ROBI aplicó la regla y giró hacia ${this.getDirectionName(currentDir)}.`
-            : `ROBI giró hacia ${this.getDirectionName(currentDir)}.`,
+            ? `¡Obstáculo detectado! WARA aplicó la regla y giró hacia ${this.getDirectionName(currentDir)}.`
+            : `WARA giró hacia ${this.getDirectionName(currentDir)}.`,
         });
       }
 
@@ -561,7 +561,7 @@ Action:
           position: { ...currentPos },
           direction: currentDir,
           robiState: 'SUCCESS',
-          logMessage: '¡ROBI esquivó el obstáculo y llegó a la estrella! ⭐',
+          logMessage: '¡WARA esquivó el obstáculo y llegó a la estrella! ⭐',
         });
         return {
           steps,
@@ -580,9 +580,9 @@ Action:
       finalDirection: currentDir,
       error: {
         type: 'WRONG_CONDITION',
-        title: 'La condición no llevó a ROBI a la estrella.',
-        reason: 'La combinación de acciones en SI y SI NO no logró conducir a ROBI a la estrella.',
-        suggestion: 'Comprueba que ROBI gire a la derecha cuando hay una piedra en frente y avance cuando el camino esté libre.',
+        title: 'La condición no llevó a WARA a la estrella.',
+        reason: 'La combinación de acciones en SI y SI NO no logró conducir a WARA a la estrella.',
+        suggestion: 'Comprueba que WARA gire a la derecha cuando hay una piedra en frente y avance cuando el camino esté libre.',
       },
     };
   }
@@ -613,7 +613,7 @@ Action:
             position: { ...currentPos },
             direction: currentDir,
             robiState: 'ERROR',
-            logMessage: `En la repetición ${r}, ROBI salió del jardín.`,
+            logMessage: `En la repetición ${r}, WARA salió del jardín.`,
           });
           return {
             steps,
@@ -622,8 +622,8 @@ Action:
             finalDirection: currentDir,
             error: {
               type: 'LOOP_COUNT_MISMATCH',
-              title: 'ROBI avanzó demasiado.',
-              reason: `El bucle repitió la acción ${rule.repetitions} veces y ROBI superó el borde del tablero en la repetición ${r}.`,
+              title: 'WARA avanzó demasiado.',
+              reason: `El bucle repitió la acción ${rule.repetitions} veces y WARA superó el borde del tablero en la repetición ${r}.`,
               suggestion: 'Reduce la cantidad de repeticiones de tu bucle.',
             },
           };
@@ -646,7 +646,7 @@ Action:
         position: { ...currentPos },
         direction: currentDir,
         robiState: 'SUCCESS',
-        logMessage: '¡ROBI completó el bucle y alcanzó la meta! ⭐',
+        logMessage: '¡WARA completó el bucle y alcanzó la meta! ⭐',
       });
       return {
         steps,
@@ -674,7 +674,7 @@ Action:
         error: {
           type: 'LOOP_COUNT_MISMATCH',
           title: 'Número de repeticiones incorrecto.',
-          reason: `ROBI repitió ${rule.repetitions} veces y quedó en (${currentPos.x}, ${currentPos.y}), a ${distance} casilla${distance > 1 ? 's' : ''} de la estrella.`,
+          reason: `WARA repitió ${rule.repetitions} veces y quedó en (${currentPos.x}, ${currentPos.y}), a ${distance} casilla${distance > 1 ? 's' : ''} de la estrella.`,
           suggestion: 'Ajusta el número de repeticiones para que coincida exactamente con la distancia a la estrella.',
         },
       };

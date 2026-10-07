@@ -104,7 +104,7 @@ export const PresenterDashboard: React.FC = () => {
   if (m1.completionRate >= 50 && m2.completionRate < 40) {
     highlightedQuote = `¡El ${m1.completionRate}% de las estudiantes ya descubrió cómo funcionan las secuencias! 🌸`;
   } else if (m2.completionRate >= 40 && m3.completionRate < 30) {
-    highlightedQuote = `¡El ${m2.completionRate}% ya le enseñó a ROBI a tomar decisiones con condicionales! 💡`;
+    highlightedQuote = `¡El ${m2.completionRate}% ya le enseñó a WARA a tomar decisiones con condicionales! 💡`;
   } else if (m3.completionRate >= 30) {
     highlightedQuote = `¡El ${m3.completionRate}% ya domina los bucles y la repetición automática! 🔄`;
   }
@@ -161,7 +161,7 @@ export const PresenterDashboard: React.FC = () => {
         <div className="my-auto py-12 flex flex-col items-center justify-center text-center gap-4 bg-white/90 p-8 rounded-3xl border-2 border-[#F4D5DD] shadow-sm max-w-xl mx-auto z-10 animate-fade-in">
           <RobiCharacter state="THINKING" size={100} />
           <h2 className="text-2xl font-black font-serif text-[#4A2E35]">
-            ROBI está esperando compañía 🌸
+            WARA está esperando compañía 🌸
           </h2>
           <p className="text-sm text-[#8C4A5A] font-semibold max-w-md leading-relaxed">
             Cuando las participantes ingresen con el código{' '}

@@ -583,7 +583,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
               {stats.recentActivity.length === 0 ? (
                 <div className="p-8 text-center flex flex-col items-center gap-2 text-xs text-[#8C4A5A]">
                   <RobiCharacter state="THINKING" size={48} />
-                  <p className="font-bold">ROBI está esperando compañía 🌸</p>
+                  <p className="font-bold">WARA está esperando compañía 🌸</p>
                   <p className="text-[11px] opacity-75">
                     Cuando las participantes comiencen a resolver misiones, la actividad aparecerá aquí.
                   </p>
